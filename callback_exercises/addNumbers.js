@@ -8,6 +8,7 @@ function addNumbers(sum, numsLeft, completionCallback) {
   
   if (numsLeft === 0) {
     completionCallback(sum);
+    reader.close();
   } else {
     reader.question("Please enter a number", function(answer) {
       let input = parseInt(answer); // converts string to a number
