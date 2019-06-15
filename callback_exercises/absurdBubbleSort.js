@@ -49,20 +49,25 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
 // Once you're done testing outerBubbleSortLoop, write absurdBubbleSort.
 
 function absurdBubbleSort(arr, sortCompletionCallback) {
+  outerBubbleSortLoop(true);
   function outerBubbleSortLoop(madeAnySwaps) {
     // Begin an inner loop if you made any swaps. Otherwise, call
     // `sortCompletionCallback`.
-    console.log("In outer bubble sort");
+    if (madeAnySwaps) {
+      innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
+    } else {
+      sortCompletionCallback(arr);
+    }
   }
 
   // Kick the first outer loop off, starting `madeAnySwaps` as true.
 }
 
-absurdBubbleSort([3, 2, 1], function (arr) {
+absurdBubbleSort([45, 2, 334], function (arr) {
   console.log("Sorted array: " + JSON.stringify(arr));
   reader.close();
 });
 
-innerBubbleSortLoop([45, 2, 334], 0, false, function(string){
- console.log(string);
-});
+// innerBubbleSortLoop([45, 2, 334], 0, false, function(string){
+//  console.log(string);
+// });
